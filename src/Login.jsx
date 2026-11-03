@@ -35,7 +35,7 @@ function Login({ onLoginExitoso }) {
       }
 
       if (data?.token) {
-        ('emr_token', data.token)
+        localStorage.setItem('emr_token', data.token);
       }
 
       onLoginExitoso?.()
