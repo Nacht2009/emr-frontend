@@ -616,9 +616,16 @@ if (!token) return;
         edad: Number.isFinite(edadNumerica) ? edadNumerica : null,
       }
 
+      
+      const token = localStorage.getItem('emr_token');
+
       const response = await fetch(API_PACIENTES_URL, {
         method: 'POST',
-        headers: headersApiJson(),
+        headers: {
+          // 2. Reemplazamos headersApiJson() por las cabeceras explícitas
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
         body: JSON.stringify(payload),
       })
 
